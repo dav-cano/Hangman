@@ -8,6 +8,7 @@ var guess_count = MAX_GUESSES;
 function newGame() {
     var randomIndex = parseInt(Math.random() * POSSIBLE_WORDS.length);
     word = POSSIBLE_WORDS[randomIndex];
+    console.log("word chosen was: " + ${word});
     guesses = "";
     guess_count = MAX_GUESSES
     updatePage();
@@ -20,14 +21,17 @@ function guessLetter() {
     {
         guess_count--;
     }
+    console.log("Current GuessCount: " + ${guess_count});
     guesses += letter;
 
     updatePage();
+    input.value = "";
 }
 
 function updatePage() {
+    console.log("upadated called");
     var clueString = "";
-
+    console.log("Empty clueString: " + clueString);
     for (var i = 0; i < word.length; i++) {
         var currentLetter = word.charAt(i);
         if(guesses.indexOf(currentLetter) >= 0){
@@ -45,6 +49,6 @@ function updatePage() {
     guessArea.innerHTML = "Guessed Letters: " + guesses;
 
     //update the image
-    document.getElementById("hangmanImage");
+    var image = document.getElementById("hangmanImage");
     image.src = "images/hangman" + guess_count + ".gif";
 }
