@@ -14,8 +14,11 @@ function newGame() {
     guess_count = MAX_GUESSES
     updatePage();
 }
-
+//Bullet 2: Stop extra guesses after game is over (Found in module 5)
 function guessLetter() {
+    if(gameOver){
+        return;
+    }
     
     var input = document.getElementById("guess");
     var letter = input.value;
@@ -27,6 +30,8 @@ function guessLetter() {
 
     updatePage();
     input.value = "";
+
+    
 }
 
 function updatePage() {
@@ -69,7 +74,7 @@ function updatePage() {
         return;
     }
 
-        
+    
 
 }
 
