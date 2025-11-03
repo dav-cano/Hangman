@@ -15,19 +15,33 @@ function newGame() {
     updatePage();
 }
 //Bullet 2: Stop extra guesses after game is over (Found in module 5)
+//Bullet 4: Don't allow guesses before the game is started (found in module 5)
+//Bullet 5: Denies 2x letter guesses  (found in module 5)
 function guessLetter() {
+    if(word ===""){
+        return;
+    }
+
     if(gameOver){
         return;
     }
     
     var input = document.getElementById("guess");
     var letter = input.value;
+
+    if(guesses.indexOf(letter) >= 0){
+        return;
+    }
+
     if(word.indexOf(letter) < 0)
     {
         guess_count--;
     }
     guesses += letter;
 
+    
+
+    //Bullet 3: We did in class I believe
     updatePage();
     input.value = "";
 
